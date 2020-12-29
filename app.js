@@ -4,7 +4,7 @@ const hbs = require(`hbs`);
 
 app.set(`views`, __dirname + `/views`);
 app.set(`view engine`, `hbs`);
-
+//lesson express GET method - route params & query string
 app.get(`/`, (req, res, next) => {
     res.render(`index`);
 });
