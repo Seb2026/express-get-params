@@ -1,6 +1,9 @@
 const express = require(`express`);
 const app = express();
 const hbs = require(`hbs`);
+const bodyParser = require(`body-parser`);
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set(`views`, __dirname + `/views`);
 app.set(`view engine`, `hbs`);
@@ -43,6 +46,16 @@ app.get(`/display-user-info`, (req, res) => {
 
 app.get(`/login`, (req, res, next) => {
     res.render(`login`);
+});
+
+app.post(`/login`, (req,res) => {
+    const {email, password} = req.body;
+
+    if(email === `ironhacker@gmail.com` && password ===`password`){
+        res.send(`welcome`);
+    }else{
+        res.send(`try again `);
+    }
 });
 
 app.listen(3000, () => console.log(`App listening om port 3000!`));
