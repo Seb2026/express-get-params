@@ -28,8 +28,17 @@ app.get(`/search`, (req, res, next) => {
 
 // post method
 
-app.get(`get-user-info`, (req,res,next) => {
+app.get(`/get-user-info`, (req,res,next) => {
     res.render(`user-info-form`);
+});
+
+app.get(`/display-user-info`, (req, res) => {
+    const { name, age, superhero} = req.query;
+    res.send(`
+    Your name is ${name}
+    Your age is ${age}
+    Your favorite superhero is ${superhero}
+    `);
 });
 
 app.listen(3000, () => console.log(`App listening om port 3000!`));
