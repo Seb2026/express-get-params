@@ -41,4 +41,8 @@ app.get(`/display-user-info`, (req, res) => {
     `);
 });
 
+app.get(`/login`, (req, res, next) => {
+    res.render(`login`);
+});
+
 app.listen(3000, () => console.log(`App listening om port 3000!`));
