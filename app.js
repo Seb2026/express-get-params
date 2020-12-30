@@ -4,6 +4,11 @@ const hbs = require(`hbs`);
 const bodyParser = require(`body-parser`);
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fakeMiddleware);
+function fakeMiddleware(req, res, next) {
+    console.log(`fake middleware called`);
+    next();
+}
 
 app.set(`views`, __dirname + `/views`);
 app.set(`view engine`, `hbs`);
@@ -58,4 +63,7 @@ app.post(`/login`, (req,res) => {
     }
 });
 
+app.get(`/test`, (req, res, next) => {
+    res.send(`testing`);
+});
 app.listen(3000, () => console.log(`App listening om port 3000!`));
